@@ -1,0 +1,23 @@
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl font-semibold">Colaboradores</h1>
+  <%= link_to "Convidar colaborador", new_colaborador_path, class: "bg-blue-600 text-white text-sm px-4 py-2 rounded" %>
+</div>
+
+<table class="w-full text-sm border-collapse">
+  <thead>
+    <tr class="text-left border-b border-gray-200">
+      <th class="py-2">Nome</th>
+      <th class="py-2">E-mail</th>
+      <th class="py-2">Papel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @colaboradores.each do |colaborador| %>
+      <tr class="border-b border-gray-100">
+        <td class="py-2"><%= colaborador.nome %></td>
+        <td class="py-2"><%= colaborador.email %></td>
+        <td class="py-2"><%= colaborador.admin? ? "admin" : "colaborador" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

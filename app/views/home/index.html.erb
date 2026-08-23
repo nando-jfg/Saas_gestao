@@ -1,0 +1,13 @@
+<h1 class="text-xl font-semibold mb-4">Bem-vindo, <%= current_usuario.nome %></h1>
+
+<p class="text-gray-600">
+  Empresa: <strong><%= current_empresa.nome %></strong>
+  (<%= current_usuario.admin? ? "admin" : "colaborador" %>)
+</p>
+
+<div class="mt-6 flex gap-4 text-sm">
+  <%= link_to "Colaboradores", colaboradores_path, class: "text-blue-600 hover:underline" %>
+  <% if policy(current_empresa).edit? %>
+    <%= link_to "Editar empresa", edit_empresa_path, class: "text-blue-600 hover:underline" %>
+  <% end %>
+</div>

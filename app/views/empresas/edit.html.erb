@@ -1,0 +1,20 @@
+<h1 class="text-xl font-semibold mb-4">Editar empresa</h1>
+
+<%= form_with model: @empresa, url: empresa_path, method: :patch, class: "space-y-4" do |f| %>
+  <% if @empresa.errors.any? %>
+    <div class="text-red-700 text-sm">
+      <ul>
+        <% @empresa.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :nome, "Nome da empresa", class: "block text-sm font-medium" %>
+    <%= f.text_field :nome, class: "mt-1 block w-full rounded border-gray-300" %>
+  </div>
+
+  <%= f.submit "Salvar", class: "bg-blue-600 text-white text-sm px-4 py-2 rounded cursor-pointer" %>
+<% end %>

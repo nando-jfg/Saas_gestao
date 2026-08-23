@@ -1,0 +1,30 @@
+<h1 class="text-xl font-semibold mb-4">Convidar colaborador</h1>
+
+<%= form_with model: @colaborador, url: colaboradores_path, class: "space-y-4" do |f| %>
+  <% if @colaborador.errors.any? %>
+    <div class="text-red-700 text-sm">
+      <ul>
+        <% @colaborador.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :nome, class: "block text-sm font-medium" %>
+    <%= f.text_field :nome, class: "mt-1 block w-full rounded border-gray-300", autofocus: true %>
+  </div>
+
+  <div>
+    <%= f.label :email, class: "block text-sm font-medium" %>
+    <%= f.email_field :email, class: "mt-1 block w-full rounded border-gray-300" %>
+  </div>
+
+  <div>
+    <%= f.label :papel, class: "block text-sm font-medium" %>
+    <%= f.select :papel, Usuario.papels.keys.map { |p| [ p.humanize, p ] }, {}, class: "mt-1 block w-full rounded border-gray-300" %>
+  </div>
+
+  <%= f.submit "Convidar", class: "bg-blue-600 text-white text-sm px-4 py-2 rounded cursor-pointer" %>
+<% end %>
