@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "SaaS Gestão" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Saas Gestao">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-sm">
+      <div class="text-center mb-8">
+        <%= link_to "SaaS Gestão", root_path, class: "text-lg font-semibold text-gray-900" %>
+      </div>
+
+      <% if notice %>
+        <p class="mb-4 rounded-md bg-green-50 text-green-800 px-4 py-2.5 text-sm"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="mb-4 rounded-md bg-red-50 text-red-800 px-4 py-2.5 text-sm"><%= alert %></p>
+      <% end %>
+
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-8 sm:px-8">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
